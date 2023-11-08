@@ -87,3 +87,14 @@ a:hover {
 .newsSeparator {
   margin: 5vh 0 5vh 0;
 }
+
+.imageContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.artworkImage {
+  width: min(350px, 80vw);
+  margin: 2vw;
+}

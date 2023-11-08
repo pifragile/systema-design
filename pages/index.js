@@ -31,7 +31,7 @@ export default function Home() {
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
                 <div className="header">
-                  piero3005
+                  piero g.
                 </div>
                 <div className="seriesContainer">
                     {projects.map((p) => (
