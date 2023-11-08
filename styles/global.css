@@ -1,32 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap');
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family:
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    Segoe UI,
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    Fira Sans,
-    Droid Sans,
-    Helvetica Neue,
-    sans-serif;
+  font-family: 'IBM Plex Mono', monospace;
 }
 
 a {
-  color: inherit;
+  color:black;
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+a:hover {
+  color:black;
+  text-decoration: none;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
+
+.seriesBox {
+  /* border: 1px solid black; */
+  /* width: 50vw; */
+  border-collapse: collapse;
+  text-align: center;
+  margin: 1.4vw;
+  width: min(80vw, 350px);
+  position:relative;
+}
+
+.seriesContainer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.seriesImage {
+  width: 100%;
+  height: 100%;
+}
+
+.seriesBox:hover .seriesText a{
+  visibility: visible;
+}
+
+.seriesText a {
+  visibility: hidden;
+  text-decoration: none;
+  position: absolute;
+  bottom: 61.8%;
+  left:50%;
+  background: yellow;
+  color: black;
+  mix-blend-mode: hard-light;
+  font-size: 20px;
+
+}
+
+.header {
+  font-size: 40px;
+  margin: 2vw  0 0 2vw ;
+  display: flex;
+  justify-content: center;
+}
+
+.newsContainer {
+  width: 100%;
+}
+
+.newsImage {
+  width: min(350px, 80vw);
+  display: block;
+}
+
+.newsItem {
+  /* border-bottom: 1px solid black; */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.newsTitle {
+  margin-bottom: 2vh;
+}
+
+.newsSeparator {
+  margin: 5vh 0 5vh 0;
 }
