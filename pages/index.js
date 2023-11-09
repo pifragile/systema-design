@@ -19,6 +19,13 @@ export default function Home() {
                     sSet[Math.floor(Math.random() * sSet.length)].media;
             });
             setProjects(series);
+
+            let twitterScript = document.createElement("script");
+            twitterScript.setAttribute(
+                "src",
+                "https://platform.twitter.com/widgets.js"
+            );
+            document.head.appendChild(twitterScript);
         }
         action();
     }, []);
@@ -27,21 +34,31 @@ export default function Home() {
         return (
             <div>
                 <Head>
-                    <title>pifragile</title>
+                    <title>piero g.</title>
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
+
+                <br></br>
                 <div className="header">
-                  pifragile
+                  piero g.
                 </div>
+                <div className="header">
+                    <a
+                        className="twitter-follow-button"
+                        href="https://twitter.com/pifragile?ref_src=twsrc%5Etfw"
+                        data-show-count="false"
+                    ></a>
+                </div>
+
+                <br></br>
                 <div className="seriesContainer">
                     {projects.map((p) => (
-                        <SeriesBox data={p} key={p.identifier}/>
+                        <SeriesBox data={p} key={p.identifier} />
                     ))}
                 </div>
 
-                <News/>
+                <News />
             </div>
-            
         );
     }
 }

@@ -22,7 +22,7 @@ a:hover {
   /* width: 50vw; */
   border-collapse: collapse;
   text-align: center;
-  margin: 1.4vw;
+  margin: 1.618vw;
   width: min(80vw, 350px);
   position:relative;
 }
@@ -57,7 +57,7 @@ a:hover {
 
 .header {
   font-size: 40px;
-  margin: 2vw  0 0 2vw ;
+  margin: 2vw  0 0 0 ;
   display: flex;
   justify-content: center;
 }
