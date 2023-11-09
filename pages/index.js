@@ -27,11 +27,11 @@ export default function Home() {
         return (
             <div>
                 <Head>
-                    <title>piero3005</title>
+                    <title>pifragile</title>
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
                 <div className="header">
-                  piero g.
+                  pifragile
                 </div>
                 <div className="seriesContainer">
                     {projects.map((p) => (
