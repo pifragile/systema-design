@@ -13,11 +13,11 @@ let m2 = 0.5;
 let m3 = 0.5;
 let m4 = 0.5;
 
-m0 = Math.random();
-m1 = Math.random();
-m2 = Math.random();
-m3 = Math.random();
-m4 = Math.random();
+// m0 = Math.random();
+// m1 = Math.random();
+// m2 = Math.random();
+// m3 = Math.random();
+// m4 = Math.random();
 
 
 let randomM0;
@@ -45,11 +45,13 @@ function getParam(urlParams, p) {
 
 function getParams(queryString) {
     const urlParams = new URLSearchParams(queryString);
-    m0 = getParam(urlParams, "m0");
-    m1 = getParam(urlParams, "m1");
-    m2 = getParam(urlParams, "m2");
-    m3 = getParam(urlParams, "m3");
-    m4 = getParam(urlParams, "m4");
+    const hash = urlParams.get('hash');
+    let rng = sfc32(...cyrb128(hash))
+    m0 = rng();
+    m1 = rng();
+    m2 = rng();
+    m3 = rng();
+    m4 = rng();
 }
 window.addEventListener("message", (e) => {
     var data = e.data;
