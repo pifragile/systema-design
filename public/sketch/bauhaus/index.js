@@ -2,18 +2,15 @@
 //////Config
 ////////////////////
 
-function preload() {
-    myShader = loadShader("shader.vert", "shader.frag");
-}
-let myShader;
-
 let palettes = [
+    "https://coolors.co/ff0080-99ecff-ff8900-ffeff0-2400c0-0099d1-ffab00",
+];
+palettes = [
     "https://coolors.co/ebe7dc-ed4316-0d52da-f399bf-0c8d55-f3be0b",
     "https://coolors.co/f8dbbb-0065bd-ffb700-e02d26",
     "https://coolors.co/393e46-00adb5-f8b500-fc3c3c-ffffff",
     "https://coolors.co/ffaea3-f5ae05-ffe9bd-fd2c05",
 ];
-
 let permutePalettes = true;
 
 let backgroundColor;
@@ -27,7 +24,7 @@ function setPalette() {
         palette = palette
             .split("https://coolors.co/")[1]
             .split("-")
-            .map((x) => pg.color(`#${x}`));
+            .map((x) => color(`#${x}`));
         if (permutePalettes) palette = shuffleArr(palette, randomM3);
     }
 }
@@ -36,7 +33,6 @@ function setPalette() {
 //////Sketch
 ////////////////////
 
-
 //params
 // 0: num boxes
 // 1: palette & permutation
@@ -44,77 +40,77 @@ function setPalette() {
 // 3 num split
 // 4: split permutation
 function cornerVertex(corner) {
-    pg.vertex(corner.x, corner.y);
+    vertex(corner.x, corner.y);
 }
 let s;
 function drawArt() {
     //for (let k = 0; k < 100; k++) {
-        setPalette();
-        pg.strokeWeight(0.0005 * cs)
-        pg.strokeWeight(0)
-        let b = new Box(0, 0, cs, cs);
-        pg.stroke(palette[0]);
-        pg.fill(palette[0]);
-        b.rect();
-        b = b.subBox(0.8);
-        s = (Math.floor(m0 * 6) + 1) * 2;
-        grid = b.gridify(s, s);
-        const pal = palette.slice(1);
-        splitBox(b, Math.floor(m2 * 3), palette)
-        const palFs = [
-            (i, j) => 0,
-            (i, j) => i + j,
-            (i, j) => i,
-            (i, j) => j,
-            (i, j) => (j / 2) % 2,
-            (i, j) => Math.floor(i / 2) % 2,
-            (i, j) => Math.floor((j + i) / 2) % 2,
-            (i, j) => ((i + j) % s < s / 2 ? 1 : 0),
-            (i, j) => (Math.floor(Math.abs(i - s * 0.5)) > s * 0.24 ? 0 : 1),
-            (i, j) => (Math.floor(Math.abs(j + 1 - s * 0.5)) > s * 0.2 ? 0 : 1),
-            (i, j) =>
-                Math.floor(Math.abs(i - s * 0.5)) > s * 0.2 &&
-                Math.floor(Math.abs(j + 1 - s * 0.5)) > s * 0.2
-                    ? 0
-                    : 1,
-            (i, j) =>
-                Math.floor(Math.abs(i - s * 0.5)) > s * 0.25 ||
-                Math.floor(Math.abs(j + 1 - s * 0.5)) > s * 0.25
-                    ? 0
-                    : 1,
-            (i, j) => Math.floor(randomM1() * pal.length),
-        ];
-        const palF = linearElem(palFs, m1);
-        for (let i = 0; i < grid.length; i++) {
-            const row = grid[i];
-            for (let j = 0; j < row.length; j++) {
-                if (i % 2 === 1 && j % 2 === 0) {
-                    let sb = grid[i][j];
-                    let sbShadow = grid[i - 1][j + 1];
-                    let col = pal[palF(i, j) % pal.length];
-                    pg.fill(col);
-                    pg.stroke(col);
-                    sb.rect();
-                    // if(i === splitX && j === splitY) {
-                    //     splitBox(sb, 7, palette.slice(1))
-                    // }
+    setPalette();
+    strokeWeight(0.0005 * cs);
+    strokeWeight(0);
+    let b = new Box(0, 0, cs, cs);
+    stroke(palette[0]);
+    fill(palette[0]);
+    b.rect();
+    b = b.subBox(0.88);
+    s = (Math.floor(m0 * 6) + 1) * 2;
+    grid = b.gridify(s, s);
+    const pal = palette.slice(1);
+    splitBox(b, Math.floor(randomM1() * 2), palette);
+    const palFs = [
+        (i, j) => 0,
+        (i, j) => i + j,
+        (i, j) => i,
+        (i, j) => j,
+        (i, j) => (j / 2) % 2,
+        (i, j) => Math.floor(i / 2) % 2,
+        (i, j) => Math.floor((j + i) / 2) % 2,
+        (i, j) => ((i + j) % s < s / 2 ? 1 : 0),
+        (i, j) => (Math.floor(Math.abs(i - s * 0.5)) > s * 0.24 ? 0 : 1),
+        (i, j) => (Math.floor(Math.abs(j + 1 - s * 0.5)) > s * 0.2 ? 0 : 1),
+        (i, j) =>
+            Math.floor(Math.abs(i - s * 0.5)) > s * 0.2 &&
+            Math.floor(Math.abs(j + 1 - s * 0.5)) > s * 0.2
+                ? 0
+                : 1,
+        (i, j) =>
+            Math.floor(Math.abs(i - s * 0.5)) > s * 0.25 ||
+            Math.floor(Math.abs(j + 1 - s * 0.5)) > s * 0.25
+                ? 0
+                : 1,
+        (i, j) => Math.floor(randomM1() * pal.length),
+    ];
+    const palF = linearElem(palFs, m1);
+    for (let i = 0; i < grid.length; i++) {
+        const row = grid[i];
+        for (let j = 0; j < row.length; j++) {
+            if (i % 2 === 1 && j % 2 === 0) {
+                let sb = grid[i][j];
+                let sbShadow = grid[i - 1][j + 1];
+                let col = pal[palF(i, j) % pal.length];
+                fill(col);
+                stroke(col);
+                sb.rect();
+                // if(i === splitX && j === splitY) {
+                //     splitBox(sb, 7, palette.slice(1))
+                // }
 
-                    pg.fill(0);
-                    pg.stroke(0);
-                    pg.beginShape();
-                    cornerVertex(sb.tl);
-                    cornerVertex(sbShadow.tl);
-                    cornerVertex(sbShadow.bl);
-                    cornerVertex(sbShadow.br);
-                    cornerVertex(sb.br);
-                    cornerVertex(sb.bl);
-                    cornerVertex(sb.tl);
-                    pg.endShape();
-                }
+                fill(0);
+                stroke(0);
+                beginShape();
+                cornerVertex(sb.tl);
+                cornerVertex(sbShadow.tl);
+                cornerVertex(sbShadow.bl);
+                cornerVertex(sbShadow.br);
+                cornerVertex(sb.br);
+                cornerVertex(sb.bl);
+                cornerVertex(sb.tl);
+                endShape();
             }
         }
-        triggerPreview();
-    //     pg.save();
+    }
+    triggerPreview();
+    //     save();
     // }
 }
 
@@ -195,57 +191,57 @@ Box = class {
     }
 
     mirrorH() {
-        let img = pg.get(
+        let img = get(
             Math.floor(this.x),
             Math.floor(this.y),
             Math.ceil(this.w),
             Math.ceil(this.h)
         );
-        pg.push();
-        pg.scale(-1, 1);
-        pg.translate(-(2 * Math.ceil(this.x) + Math.floor(this.w)), 0);
-        pg.image(
+        push();
+        scale(-1, 1);
+        translate(-(2 * Math.ceil(this.x) + Math.floor(this.w)), 0);
+        image(
             img,
             Math.floor(this.x),
             Math.floor(this.y),
             Math.ceil(this.w),
             Math.ceil(this.h)
         );
-        pg.pop();
+        pop();
     }
 
     mirrorV() {
-        let img = pg.get(
+        let img = get(
             Math.floor(this.x),
             Math.floor(this.y),
             Math.ceil(this.w),
             Math.ceil(this.h)
         );
-        pg.push();
-        pg.scale(1, -1);
-        pg.translate(0, -(2 * Math.floor(this.y) + Math.ceil(this.h)));
-        pg.image(
+        push();
+        scale(1, -1);
+        translate(0, -(2 * Math.floor(this.y) + Math.ceil(this.h)));
+        image(
             img,
             Math.floor(this.x),
             Math.floor(this.y),
             Math.ceil(this.w),
             Math.ceil(this.h)
         );
-        pg.pop();
+        pop();
     }
 
     rotate(rotation) {
-        let img = pg.get(this.x, this.y, this.w, this.h);
-        pg.push();
-        pg.translate(this.c.x, this.c.y);
-        pg.rotate(rotation * PI * 0.5);
-        pg.translate(-this.c.x, -this.c.y);
-        pg.image(img, this.x, this.y, this.w, this.h);
-        pg.pop();
+        let img = get(this.x, this.y, this.w, this.h);
+        push();
+        translate(this.c.x, this.c.y);
+        rotate(rotation * PI * 0.5);
+        translate(-this.c.x, -this.c.y);
+        image(img, this.x, this.y, this.w, this.h);
+        pop();
     }
 
     rect() {
-        pg.rect(this.x, this.y, this.w, this.h);
+        rect(this.x, this.y, this.w, this.h);
     }
 
     subBox(ratio) {
@@ -303,20 +299,21 @@ Box = class {
     }
 
     circle(r) {
-        pg.circle(this.c.x, this.c.y, r * Math.min(this.w, this.h));
+        circle(this.c.x, this.c.y, r * Math.min(this.w, this.h));
     }
 };
 
 function splitBox(b, depth, colors) {
     if (depth == 0) {
         c = colors[Math.floor(randomM4() * colors.length)];
-        pg.fill(c);
-        pg.stroke(c);
+        fill(c);
+        stroke(c);
         b.rect();
     } else {
         var d = depth - 1;
         gr = 0.5;
-        if (randomM2() < 0.5) {
+        let offset = Math.round(m2)
+        if (offset) {
             // vertical split
             var s = gr * b.w;
             splitBox(new Box(b.x + s, b.y, b.w - s, b.h), d, colors);

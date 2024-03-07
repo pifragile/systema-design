@@ -25,8 +25,20 @@ let randomM2;
 let randomM3;
 let randomM4;
 
-let queryString = window.location.search ||"?hash=0000000000000000000000";
-console.log(queryString);
+function getRandomHash() {
+    var result = "";
+    var characters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var charactersLength = characters.length;
+    for (var i = 0; i < 32; i++) {
+        result += characters.charAt(
+            Math.floor(Math.random() * charactersLength)
+        );
+    }
+    return result;
+}
+
+let queryString = window.location.search || "?hash=0000000000000000000000";
 getParams(queryString);
 
 function truncate(i) {
@@ -42,7 +54,8 @@ function getParam(urlParams, p) {
 
 function getParams(queryString) {
     const urlParams = new URLSearchParams(queryString);
-    const hash = urlParams.get("hash");
+    let hash = urlParams.get("hash");
+    //hash = getRandomHash();
     let rng = sfc32(...cyrb128(hash));
     m0 = rng();
     m1 = rng();

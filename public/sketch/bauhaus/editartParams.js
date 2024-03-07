@@ -19,18 +19,27 @@ let m4 = 0.5;
 // m3 = Math.random();
 // m4 = Math.random();
 
-
 let randomM0;
 let randomM1;
 let randomM2;
 let randomM3;
 let randomM4;
 
-const queryString = window.location.search;
-console.log(queryString);
-if (queryString) {
-    getParams(queryString);
+function getRandomHash() {
+    var result = "";
+    var characters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var charactersLength = characters.length;
+    for (var i = 0; i < 32; i++) {
+        result += characters.charAt(
+            Math.floor(Math.random() * charactersLength)
+        );
+    }
+    return result;
 }
+
+let queryString = window.location.search || "?hash=0000000000000000000000";
+getParams(queryString);
 
 function truncate(i) {
     return Math.max(Math.min(i, 0.99999999), 0);
@@ -45,8 +54,9 @@ function getParam(urlParams, p) {
 
 function getParams(queryString) {
     const urlParams = new URLSearchParams(queryString);
-    const hash = urlParams.get('hash');
-    let rng = sfc32(...cyrb128(hash))
+    let hash = urlParams.get("hash");
+    //hash = getRandomHash();
+    let rng = sfc32(...cyrb128(hash));
     m0 = rng();
     m1 = rng();
     m2 = rng();
@@ -57,7 +67,7 @@ window.addEventListener("message", (e) => {
     var data = e.data;
     if ("editartQueryString" in data) {
         getParams(data["editartQueryString"]);
-        redraw()
+        redraw();
     }
 });
 
