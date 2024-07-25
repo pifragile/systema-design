@@ -31,6 +31,7 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 5vh;
 }
 
 .seriesImage {
@@ -56,36 +57,10 @@ a:hover {
 }
 
 .header {
-  font-size: 40px;
-  margin: 2vw  0 0 0 ;
+  font-size: 15px;
+  margin: 2px  0 0 0 ;
   display: flex;
-  justify-content: center;
-}
-
-.newsContainer {
-  width: 100%;
-}
-
-.newsImage {
-  width: min(350px, 80vw);
-  display: block;
-}
-
-.newsItem {
-  /* border-bottom: 1px solid black; */
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
-
-.newsTitle {
-  margin-bottom: 2vh;
-}
-
-.newsSeparator {
-  margin: 5vh 0 5vh 0;
+  justify-content: right;
 }
 
 .imageContainer {

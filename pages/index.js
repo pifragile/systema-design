@@ -1,63 +1,44 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import SeriesBox from "../components/SeriesBox";
-import News from "../components/News";
 
 export default function Home() {
-    const [projects, setProjects] = useState([]);
+    const [artworks, setArtworks] = useState({});
 
     useEffect(() => {
         async function action() {
-            const response = await fetch(
-                "https://space.pifragile.com/pifragile/get-nfts/"
-            );
-            let series = await response.json();
-            //series = series.slice(0,1)
-            series.forEach((s) => {
-                let sSet = s["nft_set"];
-                s.imageUrl =
-                    sSet[Math.floor(Math.random() * sSet.length)].media;
-            });
-            setProjects(series);
+            const response = await fetch(`/api/artworks/`);
 
-            let twitterScript = document.createElement("script");
-            twitterScript.setAttribute(
-                "src",
-                "https://platform.twitter.com/widgets.js"
-            );
-            document.head.appendChild(twitterScript);
+            const data = await response.json();
+            console.log(data);
+            setArtworks(data);
         }
         action();
     }, []);
 
-    if (projects.length > 0) {
+    if (Object.keys(artworks).length > 0) {
+        console.log(Object.keys(artworks));
         return (
             <div>
                 <Head>
-                    <title>piero g.</title>
+                    <title>Systema Design</title>
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
+                <img src="/1.png" style={{ height: "min(250px, 20vw)" }} />
 
-                <br></br>
+                {Object.keys(artworks).map((k) => (
+                    <div className="seriesContainer" key={k}>
+                        {artworks[k].map((p) => (
+                            <SeriesBox data={p} key={p.identifier} />
+                        ))}
+                    </div>
+                ))}
+                <div style={{margin: "2px"}}>
+                <div className="header">Sytema Generative Graphic Design</div>
                 <div className="header">
-                  piero g.
+                    For inquiries:&nbsp; <b>piero [at] systema-design.ch</b>
                 </div>
-                <div className="header">
-                    <a
-                        className="twitter-follow-button"
-                        href="https://twitter.com/pifragile?ref_src=twsrc%5Etfw"
-                        data-show-count="false"
-                    ></a>
                 </div>
-
-                <br></br>
-                <div className="seriesContainer">
-                    {projects.map((p) => (
-                        <SeriesBox data={p} key={p.identifier} />
-                    ))}
-                </div>
-
-                <News />
             </div>
         );
     }
