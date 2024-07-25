@@ -17,7 +17,6 @@ export default function Home() {
     }, []);
 
     if (Object.keys(artworks).length > 0) {
-        console.log(Object.keys(artworks));
         return (
             <div>
                 <Head>
@@ -26,7 +25,7 @@ export default function Home() {
                 </Head>
                 <img src="/1.png" style={{ height: "min(250px, 20vw)" }} />
 
-                {Object.keys(artworks).map((k) => (
+                {Object.keys(artworks).sort().map((k) => (
                     <div className="seriesContainer" key={k}>
                         {artworks[k].map((p) => (
                             <SeriesBox data={p} key={p.identifier} />
