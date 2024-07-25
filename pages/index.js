@@ -36,7 +36,7 @@ export default function Home() {
                 <div style={{margin: "2px"}}>
                 <div className="header">Sytema Generative Graphic Design</div>
                 <div className="header">
-                    For inquiries:&nbsp; <b>piero [at] systema-design.ch</b>
+                    For inquiries:&nbsp; <b>piero [at] systema-design.com</b>
                 </div>
                 </div>
             </div>
