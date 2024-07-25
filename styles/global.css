@@ -57,7 +57,7 @@ a:hover {
 }
 
 .header {
-  font-size: 15px;
+  font-size: min(15px, 3vw);
   margin: 2px  0 0 0 ;
   display: flex;
   justify-content: right;
