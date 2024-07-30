@@ -23,7 +23,7 @@ export default function Home() {
                     <title>Systema Design</title>
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
-                <img src="/1.png" style={{ height: "min(250px, 20vw)" }} />
+                <img src="/3.png" style={{ height: "min(250px, 20vw)" }} />
 
                 {Object.keys(artworks).sort().map((k) => (
                     <div className="seriesContainer" key={k}>
