@@ -36,7 +36,7 @@ export default function Home() {
                 <div
                     style={{ display: "flex", justifyContent: "space-between" }}
                 >
-                    <img src="/3.png" style={{ height: "min(250px, 20vw)" }} />
+                    <img src="/4.png" style={{ height: "min(125px, 10vw)", marginBottom: "4vh" }} />
                 </div>
 
                 <div
