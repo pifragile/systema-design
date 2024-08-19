@@ -95,9 +95,11 @@ export default function Home() {
                     .sort()
                     .map((k) => (
                         <div className="seriesContainer" key={k}>
-                            {artworks[k].map((p) => (
-                                <SeriesBox data={p} key={p.identifier} />
-                            ))}
+                            {artworks[k]
+                                .sort((a, b) => a.Key.localeCompare(b.Key))
+                                .map((p) => (
+                                    <SeriesBox data={p} key={p.identifier} />
+                                ))}
                         </div>
                     ))}
             </div>
