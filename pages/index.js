@@ -39,8 +39,8 @@ export default function Home() {
                     <img
                         src="/4.png"
                         style={{
-                            height: "min(125px, 10vw)",
-                            marginBottom: "4vh",
+                            width: "min(350px, 61vw)",
+                            marginBottom: "12vh",
                         }}
                     />
                 </div>
@@ -76,7 +76,7 @@ export default function Home() {
                             display: "flex",
                             justifyContent: "flex-start",
                             flexDirection: "column",
-                            marginBottom: "4vh",
+                            marginBottom: "6vh",
                         }}
                     >
                         <div
