@@ -36,54 +36,61 @@ export default function Home() {
                 <div
                     style={{ display: "flex", justifyContent: "space-between" }}
                 >
-                    <img src="/4.png" style={{ height: "min(125px, 10vw)", marginBottom: "4vh" }} />
+                    <img
+                        src="/4.png"
+                        style={{
+                            height: "min(125px, 10vw)",
+                            marginBottom: "4vh",
+                        }}
+                    />
                 </div>
 
-                <div
-                    style={{
-                        display: "flex",
-                        justifyContent: "flex-start",
-                        alignItems: "top",
-                        flexDirection: "column",
-                        height: "8lh",
-                    }}
-                >
-                    <div>
-                        {Array(counter)
-                            .fill(0)
-                            .map((_) => (
-                                <div
-                                    style={{
-                                        display: "flex",
-                                        justifyContent: "center",
-                                    }}
-                                >
-                                    design made by algorithms
-                                </div>
-                            ))}
-                    </div>
-                </div>
-
-                <div
-                    style={{
-                        display: "flex",
-                        justifyContent: "flex-start",
-                        flexDirection: "column",
-                        marginBottom: "4vh",
-                    }}
-                >
+                <div style={{ fontSize: "min(2.8vw, 15px)" }}>
                     <div
                         style={{
                             display: "flex",
-                            justifyContent: "center",
+                            justifyContent: "flex-start",
+                            alignItems: "top",
+                            flexDirection: "column",
+                            height: "8lh",
                         }}
                     >
-                        <a href="mailto:piero@systema-design.com">
-                            <b>{">"}piero@systema-design.com</b>
-                        </a>
+                        <div>
+                            {Array(counter)
+                                .fill(0)
+                                .map((_) => (
+                                    <div
+                                        style={{
+                                            display: "flex",
+                                            justifyContent: "center",
+                                        }}
+                                    >
+                                        design made by algorithms
+                                    </div>
+                                ))}
+                        </div>
+                    </div>
+
+                    <div
+                        style={{
+                            display: "flex",
+                            justifyContent: "flex-start",
+                            flexDirection: "column",
+                            marginBottom: "4vh",
+                        }}
+                    >
+                        <div
+                            style={{
+                                display: "flex",
+                                justifyContent: "center",
+                            }}
+                        >
+                            <a href="mailto:piero@systema-design.com">
+                                <b>{">"}piero@systema-design.com</b>
+                            </a>
+                        </div>
                     </div>
                 </div>
-
                 {Object.keys(artworks)
                     .sort()
                     .map((k) => (
