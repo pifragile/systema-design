@@ -9,7 +9,7 @@ export default function Home() {
     useEffect(() => {
         const timer = setInterval(() => {
             setCounter((prevCount) => (prevCount % 7) + 1);
-        }, 500);
+        }, 250);
         return () => {
             clearInterval(timer);
         };
@@ -33,7 +33,7 @@ export default function Home() {
                     <title>Systema Design</title>
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
-                <div
+                {/* <div
                     style={{ display: "flex", justifyContent: "space-between" }}
                 >
                     <img
@@ -43,9 +43,28 @@ export default function Home() {
                             marginBottom: "12vh",
                         }}
                     />
-                </div>
+                </div> */}
 
                 <div style={{ fontSize: "min(2.8vw, 15px)" }}>
+                <div
+                        style={{
+                            display: "flex",
+                            justifyContent: "flex-start",
+                            flexDirection: "column",
+                        }}
+                    >
+                        <div
+                            style={{
+                                display: "flex",
+                                justifyContent: "flex-start",
+                            }}
+                        >
+                            <a href="mailto:piero@systema-design.com">
+                                <div><b>systema design</b></div>
+
+                            </a>
+                        </div>
+                    </div>
                     <div
                         style={{
                             display: "flex",
