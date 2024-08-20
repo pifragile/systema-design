@@ -9,7 +9,7 @@ export default async function handler(req, res) {
 
     let keys = listing.ListBucketResult.Contents;
     keys = keys
-        .filter((e) => e.Key.includes("."))
+        .filter((e) => e.Key.includes(".") && !e.Key.includes('hide'))
         .reduce((acc, cur) => {
             let projectName = cur.Key.split("/")[0];
             acc[projectName] = acc[projectName] || [];
