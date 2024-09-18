@@ -84,7 +84,7 @@ export default function Home() {
                                             justifyContent: "center",
                                         }}
                                     >
-                                        design made by algorithms
+                                        where humans and algorithms meet
                                     </div>
                                 ))}
                         </div>
