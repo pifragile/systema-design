@@ -90,7 +90,7 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <div
+                    {/* <div
                         style={{
                             display: "flex",
                             justifyContent: "flex-start",
@@ -108,7 +108,7 @@ export default function Home() {
                                 <b>{">"}piero@systema-design.com</b>
                             </a>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 {Object.keys(artworks)
                     .sort()
